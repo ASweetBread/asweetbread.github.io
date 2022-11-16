@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "element-plus": "^2.2.21",
-    "vue": "^3.2.41"
+    "normalize.css": "^8.0.1",
+    "vue": "^3.2.41",
+    "vue-router": "^4.1.6"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^3.2.0",
