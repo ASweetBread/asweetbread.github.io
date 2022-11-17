@@ -1,7 +1,10 @@
 <script setup>
 import { computed } from '@vue/reactivity';
+import { getStore } from '../store';
 
-const asideWidth = computed(()=> true ? '200px': '84px')
+const state = getStore()
+const asideWidth = computed(()=> state.isHide.value ? '200px': '84px')
+
 
 </script>
 

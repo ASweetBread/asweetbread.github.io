@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- 文字环绕效果，使用改变字体大小位置实现假环绕，未完成 -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+<style>
+    .background {
+        display: flex;
+        width: 600px;
+        height: 600px;
+        border: 1px black solid;
+        justify-content: center;
+        align-items: center;
+    }
+    .medium {
+        width: 500px;
+        height: 500px;
+        border: 1px black solid;
+        position: absolute;
+    }
+    .tags {
+        position: absolute;
+        transform-origin: 50% 50%;
+
+    }
+</style>
+</head>
+<body>
+    <div class="background">
+        <div class="medium">
+            <p class="tags">title1</p>
+            <p class="tags">title2</p>
+        </div>
+    </div>
+    <div data-v-7f9ad8d8="" data-v-732365bc="" class="tag-cloud" style="margin-top: 1.5rem;"><p data-v-7f9ad8d8="" style="color: rgb(118, 68, 59); transform: translate(194.705px, 59.2941px); opacity: 0.437182; font-size: 5.69237px;">Java</p><p data-v-7f9ad8d8="" style="color: rgb(130, 228, 119); transform: translate(242.248px, 136.285px); opacity: 0.732244; font-size: 12.7739px;">Spring</p><p data-v-7f9ad8d8="" style="color: rgb(83, 216, 64); transform: translate(134.333px, 84.0026px); opacity: 1.10292; font-size: 21.67px;">SpringBoot</p><p data-v-7f9ad8d8="" style="color: rgb(171, 190, 63); transform: translate(72.4136px, 31.7281px); opacity: 0.825579; font-size: 15.0139px;">Mysql</p><p data-v-7f9ad8d8="" style="color: rgb(125, 214, 31); transform: translate(76.0006px, 79.1096px); opacity: 0.325498; font-size: 3.01194px;">Vue</p><p data-v-7f9ad8d8="" style="color: rgb(76, 6, 213); transform: translate(144.443px, 186.393px); opacity: 0.248885; font-size: 1.17324px;">前端</p><p data-v-7f9ad8d8="" style="color: rgb(79, 240, 216); transform: translate(184.128px, 243.586px); opacity: 0.702133; font-size: 12.0512px;">后端</p><p data-v-7f9ad8d8="" style="color: rgb(76, 58, 198); transform: translate(99.4709px, 198.549px); opacity: 1.12792; font-size: 22.27px;">大数据</p><p data-v-7f9ad8d8="" style="color: rgb(129, 123, 252); transform: translate(16.1127px, 140.295px); opacity: 0.918481; font-size: 17.2435px;">运维</p><p data-v-7f9ad8d8="" style="color: rgb(16, 245, 185); transform: translate(49.0819px, 210.308px); opacity: 0.535545; font-size: 8.05308px;">AI</p></div>
+</body>
+</html>
+
+
+<script>
+    AnimateFont()
+    function colorreturn(){
+        return `rgb(${parseInt(Math.random(0,1)*256)},${parseInt(Math.random(0,1)*256)},${parseInt(Math.random(0,1)*256)})`
+    }
+    function AnimateFont(){
+        const initpositon = [ { x: 100,y: 50,opacity: 0.6,fontSize: 20 },
+        { x: 200,y: 30,opacity: 0.6,fontSize: 30 } ]
+        //初始化动画时间,调用频率(每秒调用次数),调用间隔
+        const animateTime = 8000,frequency = 50,interval = 1000 / frequency 
+        const allFont = document.querySelectorAll('.tags')
+        /**
+         * 对象初始化，包括位置，透明度，字体大小;移动步长=单程移动距离/单程动画时间*调用间隔
+         */
+        allFont.forEach((item,index)=>{
+            let p = initpositon[index]
+            if(item.style.transform===''){
+                item.style.transform = `translate(${p.x}px,${p.y}px)`
+                item.style.opacity = p.opacity
+                item.style.fontSize = `15px`
+                item.style.color = colorreturn()
+            }
+            item.step = (p.x - p.y) / (animateTime/2) * interval
+            
+        })
+        let animate = setInterval(()=>{
+            allFont.forEach((item,index)=>{
+               
+                    let p = initpositon[index]
+                    let [,x,y] = item.style.transform.match(/translate\((.+)px, (.+)px\)/)
+                    
+                    if(y>=p.x||x<=p.y) {
+                        item.step = 0 - (p.x - p.y) / (animateTime/2) * interval
+                    }else if(x >= p.x || y<= p.y) {
+                        item.step = (p.x - p.y) / (animateTime/2) * interval
+                    }
+
+                    
+                    x = x - item.step
+                    y = Number(y) + item.step
+                    
+                    item.style.transform = `translate(${x}px,${y}px)`
+
+                    let fontSizeStep = (p.fontSize - 15) / (animateTime/2) * interval
+                    let opacityStep = (1-p.opacity) / (animateTime/2) * interval
+                    
+                    
+                    if(p.y<=y&&y<(p.y+Math.abs(item.step*frequency))) {
+                        let fontSize = item.style.fontSize.match(/(.+)px/)[1]
+                        let opacity = item.style.opacity
+                        
+                        fontSize = fontSize - fontSizeStep
+                        item.style.fontSize = `${fontSize}px`
+                        
+                        opacity = opacity - opacityStep
+                        item.style.opacity = opacity
+                    }
+                    else if((p.x-Math.abs(item.step*frequency))<y&&y<=p.x) {
+
+                        
+                        let fontSize = Number(item.style.fontSize.match(/(.+)px/)[1])
+                        let opacity = Number(item.style.opacity)
+                        
+                        fontSize = fontSize + fontSizeStep
+                        item.style.fontSize = `${fontSize}px`
+                        
+                        opacity = opacity + opacityStep
+                        item.style.opacity = opacity
+                    }
+                
+                    
+
+                
+                
+            })
+        },interval)
+
+        
+    }
+</script>
