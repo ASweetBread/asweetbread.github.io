@@ -1,9 +1,10 @@
 <script setup>
 import { computed } from '@vue/reactivity';
 import { getStore } from '../store';
+import NavBar from '../components/Home/NavBar.vue'
 
 const state = getStore()
-const asideWidth = computed(()=> state.isHide.value ? '200px': '84px')
+const asideWidth = computed(()=> state.isHide ? '84px': '200px')
 
 
 </script>
@@ -12,7 +13,9 @@ const asideWidth = computed(()=> state.isHide.value ? '200px': '84px')
     <el-container>
         <el-aside :width="asideWidth" class="aside-el">Aside</el-aside>
         <el-container class="main-container">
-            <el-header>Header</el-header>
+            <el-header>
+                <nav-bar></nav-bar>
+            </el-header>
             <el-main>Main</el-main>
         </el-container>
     </el-container>

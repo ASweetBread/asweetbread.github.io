@@ -2,9 +2,9 @@ import { defineStore } from "pinia";
 import { ref } from 'vue'
 
 export const getStore = defineStore('state',()=>{
-    let isHide = ref(false)
+    const isHide = ref(false)
     function changeHide(){
-        isHide = !isHide
+        isHide.value = !isHide.value
     }
 
     return { isHide,changeHide }

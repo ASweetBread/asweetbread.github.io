@@ -1,4 +1,4 @@
-当前部分：前端
+当前部分：前端部分
 
 blog整体技术栈：前端（后台管理+前台展示） + 后端 + 数据库
 Vue3.0 + vite + ElementUI + Koa.js + MongoDB
