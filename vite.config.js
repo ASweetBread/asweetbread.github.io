@@ -14,5 +14,14 @@ export default defineConfig({
     Components({
       resolvers: [ElementPlusResolver()],
     }),
-  ]
+  ],
+  server: {
+    proxy: {
+      "/getImage": {
+        target: "https://cdn.seovx.com/d/?mom=302",
+        changeOrigin: true,
+        rewrite: (path) => "",
+      },
+    },
+  },
 })
