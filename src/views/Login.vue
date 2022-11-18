@@ -1,7 +1,6 @@
 <script setup>
 import { reactive,ref,onMounted } from 'vue';
 import { getloginStore } from '../store/index'
-import axios from 'axios'
 
 //用户登录
 const userinfo = reactive({
@@ -23,23 +22,13 @@ function changePasswordStatus(){
 }
 
 //获取图片
-// const getImage = axios.create()
-// getImage.interceptors.request.use((config)=>{
-//     return config
-// },error=>{
-//     console.log("1111")
-//     console.log(error)
-// })
-// getImage({url: '/getImage' , method: 'get'}).then(res=>{
-//     console.log(res)
-// })
 const layoutmainimage = ref(null)
 const layoutleftimage = ref(null)
 const ImgEle = document.createElement('img')
 ImgEle.src = 'https://cdn.seovx.com/d/?mom=302'
 ImgEle.style.position = 'absolute'
 ImgEle.style.height = '100vh'
-ImgEle.style.objectFit = 'cover'
+ImgEle.style.objectFit = 'contain'
 ImgEle.style.top = '0'
 ImgEle.style.zIndex = '-2'
 
@@ -48,11 +37,10 @@ onMounted(()=>{
     const ImgEleClone = ImgEle.cloneNode()
     console.log(layoutleftimage.value.style)
     ImgEleClone.style.zIndex = '-1'
-    ImgEleClone.style.filter = 'blur(25px)'
-    ImgEleClone.style.objectFit = 'cover'
+    ImgEleClone.style.filter = 'blur(20px)'
+    ImgEleClone.style.objectFit = 'contain'
     ImgEleClone.style.right = '0'
     layoutleftimage.value.appendChild(ImgEleClone)
-    layoutleftimage.value.style.overflow = 'hidden'
 })
 </script>
 
@@ -89,11 +77,13 @@ onMounted(()=>{
     overflow: hidden;
     .layoutleftimage {
         width: 430px;
-        // border: 1px solid rgba(231, 231, 231, 0.747);
+        background-color: #fff;
         margin-left: auto;
         height: 100%;
         position: relative;
-        overflow: hidden
+        overflow: hidden;
+        z-index: 0;
+        box-shadow: 0px 0px 10px black
     }
     .layoutleft {
         height: 100%;
