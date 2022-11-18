@@ -48,7 +48,7 @@ onMounted(()=>{
     const ImgEleClone = ImgEle.cloneNode()
     console.log(layoutleftimage.value.style)
     ImgEleClone.style.zIndex = '-1'
-    ImgEleClone.style.filter = 'blur(15px)'
+    ImgEleClone.style.filter = 'blur(25px)'
     ImgEleClone.style.objectFit = 'cover'
     ImgEleClone.style.right = '0'
     layoutleftimage.value.appendChild(ImgEleClone)
@@ -89,9 +89,11 @@ onMounted(()=>{
     overflow: hidden;
     .layoutleftimage {
         width: 430px;
-        border: 1px solid rgba(231, 231, 231, 0.747);
+        // border: 1px solid rgba(231, 231, 231, 0.747);
         margin-left: auto;
         height: 100%;
+        position: relative;
+        overflow: hidden
     }
     .layoutleft {
         height: 100%;
