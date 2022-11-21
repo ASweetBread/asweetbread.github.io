@@ -9,9 +9,16 @@ const userinfo = reactive({
 })
 const state = getloginStore()
 function loginEvent(){
+    if(userinfo.username.trim()===""||userinfo.password.trim()==="") {
+        ElNotification({
+            title: 'Warning',
+            message: '账户密码不能为空',
+            type: 'warning',
+        })
+        return ""
+    }
     state.getlogin(userinfo).then(res=>{
-        console.log("Login.vue返回的res")
-        console.log(res)
+        
     })
 }
 
@@ -35,7 +42,6 @@ ImgEle.style.zIndex = '-2'
 onMounted(()=>{
     layoutmainimage.value.appendChild(ImgEle)
     const ImgEleClone = ImgEle.cloneNode()
-    console.log(layoutleftimage.value.style)
     ImgEleClone.style.zIndex = '-1'
     ImgEleClone.style.filter = 'blur(20px)'
     ImgEleClone.style.objectFit = 'contain'

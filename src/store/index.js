@@ -14,19 +14,27 @@ export const getStore = defineStore('state',()=>{
 export const getloginStore = defineStore('state',()=>{
     const useinfo = reactive({
         "username": "",
-        "token": ""
+        "token": "",
+        "role": ""
     })
     function getlogin(data) {
         return new Promise((resolve,reject)=>{
-            console.log(2)
             getuserinfo(data).then(res=>{
-                console.log("Store中获取的数据")
-                console.log(res)
-                resolve(res)
+                const result = res.data
+                if(result.status==200) {
+                    useinfo.username = result.data.username
+                    useinfo.token = result.data.token
+                    useinfo.role = result.data.role
+                    console.log(useinfo)
+                    resolve(result)
+                }else {
+                    reject(result)
+                }
+                
             })
         })
         
     }
 
-    return { getlogin }
+    return { useinfo,getlogin }
 })
