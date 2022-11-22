@@ -17,6 +17,12 @@ export const getloginStore = defineStore('state',()=>{
         "token": "",
         "role": ""
     })
+    function useinfoPersistence(){
+        const data = JSON.parse(localStorage.getItem('useinfo'))
+        useinfo.username = data.username
+        useinfo.token = data.token
+        useinfo.role = data.role
+    }
     function getlogin(data) {
         return new Promise((resolve,reject)=>{
             getuserinfo(data).then(res=>{
@@ -25,7 +31,7 @@ export const getloginStore = defineStore('state',()=>{
                     useinfo.username = result.data.username
                     useinfo.token = result.data.token
                     useinfo.role = result.data.role
-                    console.log(useinfo)
+                    localStorage.setItem('useinfo', JSON.stringify(useinfo));
                     resolve(result)
                 }else {
                     reject(result)
@@ -36,5 +42,15 @@ export const getloginStore = defineStore('state',()=>{
         
     }
 
-    return { useinfo,getlogin }
+    return { useinfo,getlogin,useinfoPersistence }
+})
+
+export const getMenuStore = defineStore('state',()=>{
+    const menulist = ref({})
+
+    function getMenuList() {
+        return new Promise((resolve,reject)=>{
+            
+        })
+    }
 })

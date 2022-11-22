@@ -6,9 +6,10 @@ export default function beforeEach(router) {
         if(to.name == "login"){
             next()
         }else {
-            if(state.useinfo.token==""){
+            if(localStorage.getItem('useinfo')==""){
                 next({name: "login"})
             }else {
+                localStorage.getItem('useinfo')&&state.useinfo==""?state.useinfoPersistence(): ""
                 next()
             }
         }

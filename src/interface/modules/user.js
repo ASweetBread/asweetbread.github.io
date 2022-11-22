@@ -1,7 +1,6 @@
 import request from "../request";
 
 export const getuserinfo = (params)=>{
-    console.log(3)
     return request({
         url: '/userinfo',
         method: 'post',
@@ -9,4 +8,10 @@ export const getuserinfo = (params)=>{
     })
 }
 
-
+export const getMenuList = (params)=>{
+    return request({
+        url: '/menulist',
+        method: 'get',
+        data: params
+    })
+}

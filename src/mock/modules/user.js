@@ -5,6 +5,11 @@ const account = [
     { username: 'user01',password: '123456',role: '0' },
     { username: 'admintest',password: 'admintest',role: '0' },
 ]
+const menulist = [
+    { name: '文章管理',children: [
+        { name: '' }
+    ] }
+]
 
 export const getuserinfo = (config)=>{
     /**
@@ -29,4 +34,8 @@ export const getuserinfo = (config)=>{
         "status": 200,
         "msg": "请求成功"
     }
+}
+
+export const getMenuList = (config)=>{
+
 }
