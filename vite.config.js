@@ -3,7 +3,7 @@ import vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
-import { ElementPlus } from 'unplugin-element-plus'
+import  ElementPlus  from 'unplugin-element-plus/vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -17,13 +17,9 @@ export default defineConfig({
     }),
     ElementPlus({})
   ],
-  server: {
-    proxy: {
-      "/getImage": {
-        target: "https://cdn.seovx.com/d/?mom=302",
-        changeOrigin: true,
-        rewrite: (path) => "",
-      },
-    },
-  },
+  resolve: {
+    alias: {
+      '@': '/src'
+    }
+  }
 })

@@ -27,4 +27,5 @@ const router = VueRouter.createRouter({
     routes, // `routes: routes` 的缩写
   })
 
+
 export default router

@@ -1,8 +1,10 @@
 <script setup>
 import { reactive,ref,onMounted } from 'vue';
 import { getloginStore } from '../store/index'
+import { useRouter } from 'vue-router';
 
 //用户登录
+const router = useRouter()
 const userinfo = reactive({
     username: "admin",
     password: "admin" 
@@ -15,10 +17,10 @@ function loginEvent(){
             message: '账户密码不能为空',
             type: 'warning',
         })
-        return ""
+        return false
     }
     state.getlogin(userinfo).then(res=>{
-        
+        router.push({ name: "home" })
     })
 }
 
