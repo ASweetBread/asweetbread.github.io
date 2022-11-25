@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import { ref, reactive } from 'vue'
-import { getuserinfo } from '../interface/modules/user'
+import { getuserinfo,getMenuList } from '../interface/modules/user'
 
 export const getStore = defineStore('state',()=>{
     const isHide = ref(false)
@@ -26,17 +26,11 @@ export const getloginStore = defineStore('state',()=>{
     function getlogin(data) {
         return new Promise((resolve,reject)=>{
             getuserinfo(data).then(res=>{
-                const result = res.data
-                if(result.status==200) {
-                    useinfo.username = result.data.username
-                    useinfo.token = result.data.token
-                    useinfo.role = result.data.role
+                    useinfo.username = res.data.username
+                    useinfo.token = res.data.token
+                    useinfo.role = res.data.role
                     localStorage.setItem('useinfo', JSON.stringify(useinfo));
-                    resolve(result)
-                }else {
-                    reject(result)
-                }
-                
+                    resolve(res)
             })
         })
         
@@ -45,12 +39,17 @@ export const getloginStore = defineStore('state',()=>{
     return { useinfo,getlogin,useinfoPersistence }
 })
 
-export const getMenuStore = defineStore('state',()=>{
+export const getMenuStore = defineStore('Menu',()=>{
     const menulist = ref({})
 
-    function getMenuList() {
-        return new Promise((resolve,reject)=>{
-            
+    function getList() {
+        return new Promise((resolve)=>{
+            getMenuList().then(res=>{
+                menulist.value = res
+                localStorage.setItem('menulist',JSON.stringify(menulist))
+                resolve(res)
+            })
         })
     }
+    return { menulist, getList }
 })

@@ -2,6 +2,7 @@
 import { computed } from '@vue/reactivity';
 import { getStore } from '../store';
 import NavBar from '../components/Home/NavBar.vue'
+import AsideBar from '@/components/Home/AsideBar.vue'
 
 const state = getStore()
 const asideWidth = computed(()=> state.isHide ? '84px': '200px')
@@ -12,7 +13,9 @@ const asideWidth = computed(()=> state.isHide ? '84px': '200px')
 
 <template>
     <el-container>
-        <el-aside :width="asideWidth" class="aside-el">Aside</el-aside>
+        <el-aside :width="asideWidth" class="aside-el">
+            <AsideBar></AsideBar>
+        </el-aside>
         <el-container class="main-container">
             <el-header>
                 <nav-bar></nav-bar>

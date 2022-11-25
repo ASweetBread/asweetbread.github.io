@@ -6,8 +6,17 @@ const account = [
     { username: 'admintest',password: 'admintest',role: '0' },
 ]
 const menulist = [
-    { name: '文章管理',children: [
-        { name: '' }
+    { 
+        menuname: '文章管理',
+        name: 'Article',
+        path: '/article',
+        icon: 'Notebook',
+        children: [
+        { menuname: '文章列表',path: '/articles',name: 'Articles',icon:'Collection' },
+        { menuname: '文章编写',path: '/new-article',name: 'NewArticle',icon:'DocumentAdd' },
+        { menuname: '草稿箱',path: '/local',name: 'Local',icon:'DocumentDelete' },
+        { menuname: '分类管理',path: '/category',name: 'Category',icon:'Files' },
+        { menuname: '标签管理',path: '/tags',name: 'Tags',icon:'CollectionTag' }
     ] }
 ]
 
@@ -37,5 +46,6 @@ export const getuserinfo = (config)=>{
 }
 
 export const getMenuList = (config)=>{
-
+    console.log('mock-getMenuList')
+    return menulist
 }
