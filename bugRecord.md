@@ -11,3 +11,6 @@ Vue3.0使用记录
 如果你想定义一个响应式变量去接受后端返回的值，使用const data = reactive({})定义，然后使用 data.res = res 来接受此时数据为响应式的
 
 vConsole，手机端开发控制台
+
+已经卸载的包依赖报错的问题
+删除node_module，重新安装依赖

@@ -34,4 +34,7 @@ const asideWidth = computed(()=> state.isHide ? '84px': '200px')
 .aside-el {
     transition: width 0.45s;
 }
+.el-main {
+    background-color: #d1d5da;
+}
 </style>
