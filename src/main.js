@@ -6,6 +6,8 @@ import router from './router/index.js'
 import beforeEach from './router/beforeEnterRouter'
 import './mock/index'
 
+
+
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
 const app = createApp(App)
@@ -13,6 +15,6 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
   app.component(key, component)
 }
 app.use(createPinia())
-//beforeEach(router)
+beforeEach(router)
 app.use(router)
 app.mount('#app')

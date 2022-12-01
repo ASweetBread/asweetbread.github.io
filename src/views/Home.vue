@@ -20,7 +20,9 @@ const asideWidth = computed(()=> state.isHide ? '84px': '200px')
             <el-header>
                 <nav-bar></nav-bar>
             </el-header>
-            <el-main>Main</el-main>
+            <el-main>
+                <router-view></router-view>
+            </el-main>
         </el-container>
     </el-container>
 </template>
