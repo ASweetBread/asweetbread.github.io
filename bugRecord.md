@@ -2,6 +2,7 @@ ElementUIPlus使用自动导入，Notication会丢失样式
 https://blog.csdn.net/Delete_89x/article/details/126430049
 ElementUI导入图标，动态图标渲染。使用Vue的component组件
 <component :is="item.icon"></component>
+ElementPlus使用自动导入后，可以直接在setup中使用组件不用再次引入
 
 
 Pinia使用记录
@@ -14,3 +15,5 @@ vConsole，手机端开发控制台
 
 已经卸载的包依赖报错的问题
 删除node_module，重新安装依赖
+
+Vue3.0,refs的使用

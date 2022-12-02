@@ -1,12 +1,11 @@
 <script setup>
-import { computed } from '@vue/reactivity';
+import { computed, onUnmounted } from 'vue';
 import { getStore } from '../store';
 import NavBar from '../components/Home/NavBar.vue'
 import AsideBar from '@/components/Home/AsideBar.vue'
 
 const state = getStore()
 const asideWidth = computed(()=> state.isHide ? '84px': '200px')
-
 
 
 </script>
