@@ -105,12 +105,10 @@ function getFile(e){
 
 // 存储到localStorage
 document.onkeydown = function SaveAsStorage(e){
-  console.log('执行本地存储')
-  console.log(e)
-  e.preventDefault();
 	var currKey=0, e=e||window.event;
 	currKey = e.keyCode||e.which||e.charCode;
 	if(currKey == 83 && (e.ctrlKey||e.metaKey)){
+    e.preventDefault();
     data.content = vditor.value.getValue()
     localStorage.setItem('Article',JSON.stringify(data))
 		return false;
@@ -121,7 +119,7 @@ document.onkeydown = function SaveAsStorage(e){
 function SaveAsLocal(){
   data.content = vditor.value.getValue()
 
-  // 保存后清楚localStorage
+  // 保存后清除 localStorage
   localStorage.removeItem('Article')
 }
 
@@ -132,7 +130,21 @@ function PulishArticle(){
 
 // 导出到本地
 function OutputArticle(){
-
+  if(!data.titleInput){
+    ElNotification({
+            title: 'Warning',
+            message: '请输入标题',
+            type: 'warning',
+            duration: 1000
+        })
+    return false
+  }
+  let url = window.URL.createObjectURL(new Blob([vditor.value.getValue()]))
+  const download = document.createElement('a')
+  download.href = url
+  download.download = data.titleInput + '.md'
+  download.click()
+  localStorage.removeItem('Article')
 }
 </script>
 
