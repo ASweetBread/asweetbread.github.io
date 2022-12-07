@@ -1,5 +1,8 @@
 <script setup>
 import { getStore } from '../../store';
+import { useRoute } from 'vue-router'
+const route = useRoute()
+console.log(route)
 
 const state = getStore()
 function changeIsHide(){
@@ -18,10 +21,10 @@ const imgsrc = "/src/assets/vue.svg"
     </div>
     <div>
         <el-breadcrumb separator="/">
-            <el-breadcrumb-item :to="{ path: '/' }">homepage</el-breadcrumb-item>
-            <el-breadcrumb-item
-            ><a href="/">promotion management</a></el-breadcrumb-item
-            >
+            <el-breadcrumb-item  :to="{ path: '/' }">首页</el-breadcrumb-item>
+            <el-breadcrumb-item  :to="{ path: item.path }" v-for="item in this.$route.matched.slice(1)">{{item.meta.menuname}}</el-breadcrumb-item>
+
+            
         </el-breadcrumb>
     </div>
     <div class="rightmenu">

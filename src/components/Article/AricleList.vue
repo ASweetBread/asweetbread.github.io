@@ -5,6 +5,19 @@
 </template>
 
 <script setup>
+import { reactive } from 'vue';
+const data = reactive({
+    tableList: [
+        {
+            title: '',
+            category: '',
+            status: '',
+            tags: []
+        }
+    ]
+})
+
+
 
 </script>
 

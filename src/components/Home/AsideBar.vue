@@ -3,11 +3,9 @@ import { ref,reactive } from 'vue';
 import { getMenuStore,getStore } from '../../store/index'
 
 const Menu = getMenuStore()
-console.log(Menu)
 const data = reactive({})
 
 Menu.getList().then((res)=>{
-    console.log('AsideBar.vue')
     data.menulist = res
 })
 

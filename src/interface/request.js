@@ -16,7 +16,6 @@ service.interceptors.request.use((config)=>{
 })
 
 service.interceptors.response.use(response=>{
-    console.log('response')
     if(response.status==200){
         return response.data
     }else {

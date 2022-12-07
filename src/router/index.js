@@ -14,27 +14,52 @@ const routes = [
             {
                 path: '/articles',
                 name: 'Articles',
-                component: ()=>import('@/components/Article/AricleList.vue')
+                component: ()=>import('@/components/Article/AricleList.vue'),
+                meta: {
+                    menuname: '文章列表',
+                    icon:'Collection'
+                },
+                
             },
             {
                 path: '/new-article',
                 name: 'NewArticle',
-                component: ()=>import('@/components/Article/NewArticle.vue')
+                component: ()=>import('@/components/Article/NewArticle.vue'),
+                meta: {
+                    menuname: '文章编写',
+                    icon:'DocumentAdd'
+                },
+                
             },
             {
                 path: '/local',
                 name: 'Local',
-                component: ()=>import('@/components/Article/Local.vue')
+                component: ()=>import('@/components/Article/Local.vue'),
+                meta: {
+                    menuname: '草稿箱',
+                    icon:'DocumentDelete'
+                },
+                
             },
             {
                 path: '/category',
                 name: 'Category',
-                component: ()=>import('@/components/Article/Category.vue')
+                component: ()=>import('@/components/Article/Category.vue'),
+                meta: {
+                    menuname: '分类管理',
+                    icon:'Files'
+                },
+                
             },
             {
                 path: '/tags',
                 name: 'Tags',
-                component: ()=>import('@/components/Article/Tags.vue')
+                component: ()=>import('@/components/Article/Tags.vue'),
+                meta: {
+                    menuname: '标签管理',
+                    icon:'CollectionTag'
+                },
+                
             }
         ]
     },

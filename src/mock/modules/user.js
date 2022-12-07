@@ -46,6 +46,5 @@ export const getuserinfo = (config)=>{
 }
 
 export const getMenuList = (config)=>{
-    console.log('mock-getMenuList')
     return menulist
 }

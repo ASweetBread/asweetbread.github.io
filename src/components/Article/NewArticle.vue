@@ -68,6 +68,7 @@ onMounted(() => {
     data.titleInput = storage.titleInput
   }
   vditor.value = new Vditor('vditor', {
+    width: '100%',
     after: ()=>{
       vditor.value.setValue(data.content, true)
     },
@@ -80,7 +81,7 @@ onUnmounted(()=>{
   vditor.value.destroy()
 })
 
-// 上传md文件功能
+// 加载md文件功能
 const UploadfileValue = ref()
 function getFile(e){
   if(UploadfileValue.value.files.length!=0) {
@@ -163,7 +164,6 @@ function OutputArticle(){
     margin-top: 20px;
   }
   #vditor {
-    width: 100%;
     box-shadow: 3px 3px 10px 10px rgb(199, 199, 199);
     max-width: 1000px;
     flex: 1;
