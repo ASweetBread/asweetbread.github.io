@@ -1,15 +1,24 @@
 <script setup>
 import { getStore } from '../../store';
 import { useRoute } from 'vue-router'
-const route = useRoute()
-console.log(route)
+import { computed } from '@vue/reactivity';
 
+
+
+// 侧边栏控制
 const state = getStore()
 function changeIsHide(){
     state.changeHide()
 }
-
+// 用户图片
 const imgsrc = "/src/assets/vue.svg"
+
+// 面包屑导航
+const route = useRoute()
+console.log(route)
+const breadList = computed(()=>{
+    return  route.matched.filter((item,index)=>index!==0&&item.meta.menuname)
+})
 
 </script>
 
@@ -22,9 +31,7 @@ const imgsrc = "/src/assets/vue.svg"
     <div>
         <el-breadcrumb separator="/">
             <el-breadcrumb-item  :to="{ path: '/' }">首页</el-breadcrumb-item>
-            <el-breadcrumb-item  :to="{ path: item.path }" v-for="item in this.$route.matched.slice(1)">{{item.meta.menuname}}</el-breadcrumb-item>
-
-            
+            <el-breadcrumb-item  :to="{ path: item.path }" v-for="item in breadList">{{item.meta.menuname}}</el-breadcrumb-item>
         </el-breadcrumb>
     </div>
     <div class="rightmenu">
