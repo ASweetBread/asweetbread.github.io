@@ -26,6 +26,7 @@
 import { ref, onMounted, reactive, onUnmounted } from 'vue';
 import Vditor from 'vditor';
 import 'vditor/dist/index.css';
+import { useRoute } from 'vue-router'
 
 // 新文章编写
 const data = reactive({
@@ -59,9 +60,13 @@ const TagsOptions = ref([{
   label: 'Vditor'
 }])
 
+const route = useRoute()
+const storage = JSON.parse(localStorage.getItem('Article'))
 onMounted(() => {
-  const storage = JSON.parse(localStorage.getItem('Article'))
-  if(storage){
+  if(route.query.id) {
+    alert(route.query.id)
+  }
+  else if(storage){
     data.category = storage.category
     data.content = storage.content
     data.tag = storage.tag
@@ -74,8 +79,6 @@ onMounted(() => {
     },
     placeholder: '开启书写你的文章吧~~~~',
   });
-  
-  
 });
 onUnmounted(()=>{
   vditor.value.destroy()

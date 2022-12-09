@@ -20,9 +20,15 @@ const asideWidth = computed(()=> state.isHide ? '84px': '200px')
                 <nav-bar></nav-bar>
             </el-header>
             <el-main>
+
+              <router-view v-slot="{ Component }">
                 <transition name="fade-transform" mode="out-in">
-                    <router-view></router-view>
+                  <component :is="Component" />
                 </transition>
+              </router-view>
+                <!-- <transition name="fade-transform" mode="out-in">
+                    <router-view></router-view>
+                </transition> -->
             </el-main>
         </el-container>
     </el-container>
