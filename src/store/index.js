@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 import { ref, reactive } from 'vue'
 import { getuserinfo,getMenuList } from '../interface/modules/user'
 
-export const getStore = defineStore('state',()=>{
+export const getStore = defineStore('asideBar',()=>{
     const isHide = ref(false)
     function changeHide(){
         isHide.value = !isHide.value

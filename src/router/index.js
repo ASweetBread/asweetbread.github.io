@@ -33,11 +33,11 @@ const routes = [
                 
             },
             {
-                path: '/local',
-                name: 'Local',
-                component: ()=>import('@/components/Article/Local.vue'),
+                path: '/collection',
+                name: 'Collection',
+                component: ()=>import('@/components/Article/Collection.vue'),
                 meta: {
-                    menuname: '草稿箱',
+                    menuname: '文章收藏',
                     icon:'DocumentDelete'
                 },
                 

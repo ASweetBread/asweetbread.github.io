@@ -9,8 +9,7 @@ Menu.getList().then((res)=>{
     data.menulist = res
 })
 
-const state = getStore()
-const isHide = state.isHide
+const asideBar = getStore()
 
 </script>
 
@@ -18,7 +17,7 @@ const isHide = state.isHide
 
     <el-menu
         router
-        :collapse="isHide"
+        :collapse="asideBar.isHide"
         active-text-color="#ffd04b"
         background-color="#545c64"
         class="el-menu-vertical-demo"
@@ -63,6 +62,6 @@ const isHide = state.isHide
 <style scoped>
 .el-menu-vertical-demo {
     min-height: 100%;
-    overflow: auto;
+    overflow: hidden;
 }
 </style>

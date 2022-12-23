@@ -14,7 +14,7 @@ const menulist = [
         children: [
         { menuname: '文章列表',path: '/articles',name: 'Articles',icon:'Collection' },
         { menuname: '文章编写',path: '/new-article',name: 'NewArticle',icon:'DocumentAdd' },
-        { menuname: '草稿箱',path: '/local',name: 'Local',icon:'DocumentDelete' },
+        { menuname: '文章收藏',path: '/collection',name: 'Collection',icon:'DocumentDelete' },
         { menuname: '分类管理',path: '/category',name: 'Category',icon:'Files' },
         { menuname: '标签管理',path: '/tags',name: 'Tags',icon:'CollectionTag' }
     ] }

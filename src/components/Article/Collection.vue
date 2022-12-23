@@ -7,10 +7,6 @@
             <el-select v-model="data.condition.tag" class="select" placeholder="标签">
                 <el-option v-for="item in data.tags" :key="item" :label="item" :value="item" />
             </el-select>
-            <el-select v-model="data.condition.IsPublish" class="select" placeholder="状态">
-                <el-option label="已发布" :value="1" />
-                <el-option label="未发布" :value="0" />
-            </el-select>
             <el-autocomplete
                 v-model="data.titleInput"
                 :fetch-suggestions="querySearch"
@@ -216,6 +212,7 @@ function deleteArticle(id){
             flex-shrink: 1;
         }
     }
+    
     .tableDiv {
         width: 100%;
     }

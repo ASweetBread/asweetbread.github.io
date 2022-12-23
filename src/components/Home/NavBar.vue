@@ -3,19 +3,16 @@ import { getStore } from '../../store';
 import { useRoute } from 'vue-router'
 import { computed } from '@vue/reactivity';
 
-
-
 // 侧边栏控制
-const state = getStore()
+const asideBar = getStore()
 function changeIsHide(){
-    state.changeHide()
+    asideBar.changeHide()
 }
 // 用户图片
 const imgsrc = "/src/assets/vue.svg"
 
 // 面包屑导航
 const route = useRoute()
-console.log(route)
 const breadList = computed(()=>{
     return  route.matched.filter((item,index)=>index!==0&&item.meta.menuname)
 })
@@ -25,8 +22,8 @@ const breadList = computed(()=>{
 <template>
 <div class="navbar">
     <div class="collapse" @click="changeIsHide">
-        <el-icon v-if="state.isHide"><Expand /></el-icon> 
-        <el-icon v-if="!state.isHide"><Fold /></el-icon>
+        <el-icon v-if="asideBar.isHide"><Expand /></el-icon> 
+        <el-icon v-if="!asideBar.isHide"><Fold /></el-icon>
     </div>
     <div>
         <el-breadcrumb separator="/">

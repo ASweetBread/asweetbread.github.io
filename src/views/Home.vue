@@ -5,7 +5,7 @@ import NavBar from '../components/Home/NavBar.vue'
 import AsideBar from '@/components/Home/AsideBar.vue'
 
 const state = getStore()
-const asideWidth = computed(()=> state.isHide ? '84px': '200px')
+const asideWidth = computed(()=> state.isHide ? '64px': '200px')
 
 
 </script>
