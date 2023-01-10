@@ -16,6 +16,7 @@
     "normalize.css": "^8.0.1",
     "pinia": "^2.0.23",
     "vditor": "^3.8.18",
+    "vite-plugin-node": "^1.0.0",
     "vue": "^3.2.41",
     "vue-router": "^4.1.6"
   },

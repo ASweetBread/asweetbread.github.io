@@ -194,7 +194,7 @@ function deleteArticle(id){
     padding-bottom: 10px;
     
     .panel {
-        width: 100%;
+        width: 97%;
         display: flex;
         flex-direction: row;
         justify-content: start;
@@ -214,7 +214,7 @@ function deleteArticle(id){
     }
     
     .tableDiv {
-        width: 100%;
+        width: 97%;
     }
     @media screen and (min-width: 1080px) {
         .panel {

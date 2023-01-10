@@ -63,10 +63,12 @@ const TagsOptions = ref([{
 const route = useRoute()
 const storage = JSON.parse(localStorage.getItem('Article'))
 onMounted(() => {
+  // 如果路由中有文章id，则编辑该文章
   if(route.query.id) {
     alert(route.query.id)
   }
   else if(storage){
+    // 如果localStorage中存在编辑缓存，则读取继续编辑
     data.category = storage.category
     data.content = storage.content
     data.tag = storage.tag
