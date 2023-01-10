@@ -4,7 +4,7 @@ import App from './App.vue'
 import { createPinia } from 'pinia'
 import router from './router/index.js'
 import beforeEach from './router/beforeEnterRouter'
-import './mock/index'
+// import './mock/index'
 
 
 

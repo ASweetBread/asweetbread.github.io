@@ -28,6 +28,12 @@ import Vditor from 'vditor';
 import 'vditor/dist/index.css';
 import { useRoute } from 'vue-router'
 
+import { tagsOptions } from '@/interface/modules/article.js'
+
+tagsOptions().then(res=>{
+  console.log(res)
+})
+
 // 新文章编写
 const data = reactive({
   category: '',

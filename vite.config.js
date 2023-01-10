@@ -27,7 +27,7 @@ export default defineConfig({
       // Nodejs native Request adapter
       // currently this plugin support 'express', 'nest', 'koa' and 'fastify' out of box,
       // you can also pass a function if you are using other frameworks, see Custom Adapter section
-      adapter: 'express',
+      adapter: 'koa',
 
       // tell the plugin where is your project entry
       appPath: './backEnd/app.js',
