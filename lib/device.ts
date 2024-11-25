@@ -13,7 +13,7 @@ class Device {
         return document.documentElement.clientWidth >= this.md && document.documentElement.clientWidth < this.sm
     }
     isPC() {
-        return document.documentElement.clientWidth >= this.sm
+        return document.documentElement.clientWidth >= this.md
     }
 }
 

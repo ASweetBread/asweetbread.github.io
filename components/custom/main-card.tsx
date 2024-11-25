@@ -55,8 +55,8 @@ export default function MainCard() {
 		setAnimateState(true)
 	},[animateState])
 	return (
-		<main className="relative">
-			<div className="absolute w-full h-full md:flex md:justify-center pt-5 hidden">
+		<main className="relative hidden md:block">
+			<div className="absolute w-full h-full md:flex md:justify-center pt-5">
 				<div className={`absolute h-full ${animateState ? 'animate-spin-slow' : ''}`}>
 					{spanelements}
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" className="h-full">

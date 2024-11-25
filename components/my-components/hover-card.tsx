@@ -37,7 +37,7 @@ const HoverCardSecond: React.FC<{ DisplayType: 'rotate', trigger?: Boolean } & R
 
 const HoverCardThird: React.FC<React.HTMLAttributes<HTMLDivElement> & { skills: SkillType[] }> = ({ className, skills }) => {
 	return (
-		<div className="absolute pointer-events-none z-10 -top-5 left-0 flex flex-row gap-3 opacity-0 group-hover:opacity-100 group-hover:-translate-y-full duration-300">
+		<div className={`absolute pointer-events-none z-10 -top-5 left-0 flex flex-row gap-3 opacity-0 group-hover:opacity-100 group-hover:-translate-y-full duration-300 ${className}`}>
 			{skills.map((skill, index) => {
 				return (
 					<div className="bg-white rounded-sm shadow-md p-4" key={skill.name}>

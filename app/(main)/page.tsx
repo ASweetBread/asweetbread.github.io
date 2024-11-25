@@ -8,6 +8,7 @@ import SkillPanel from '@/components/custom/skill-panel';
 import { motion, useScroll, useTransform, useMotionValueEvent } from "framer-motion"
 import { use, useEffect, useRef, useState } from 'react';
 import { device } from '@/lib/device';
+import { init } from 'next/dist/compiled/webpack/webpack';
 
 export default function Home() {
 	const otherpannel = useRef(null)
@@ -34,18 +35,17 @@ export default function Home() {
 	})
 	const [isH5, setIsH5] = useState(false)
 	useEffect(()=>{
-		console.log(device.isH5(),'isH5')
 		setIsH5(device.isH5())
 	},[])
 	
 	return (
 		<>
-			<div className="pb-10 relative z-10" style={{ perspective: '1000px'}}>
+			<div className="pb-10 relative z-10" style={isH5?{}:{ perspective: '1000px'}}>
 				<ColorPalette></ColorPalette>
 				<div className='w-screen h-screen bg-transparent'></div>
 				<motion.div ref={otherpannel} className='bg-white relative z-10 shadow-2xl origin-center' style={isH5?{}:{ rotateX: rotateX, transformStyle: 'preserve-3d' }}>
 					<MainCard></MainCard>
-					<SkillPanel className="md:mt-10"></SkillPanel>
+					<SkillPanel className="md:mt-10 mx-0"></SkillPanel>
 					<ProjectCard className="mt-10"></ProjectCard>
 				</motion.div>
 			</div>

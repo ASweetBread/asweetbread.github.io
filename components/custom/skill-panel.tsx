@@ -5,6 +5,7 @@ import { HoverCard, HoverCardFirst, HoverCardSecond } from '../my-components/hov
 import Progress from '../my-components/progress';
 import { skills } from '@/config/config';
 import config from '@/tailwind.config'
+import { device } from '@/lib/device';
 
 
 const SkillPanel: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ className }) => {
@@ -46,11 +47,12 @@ const SkillPanel: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ className 
 	}
 
 	useEffect(() => {
-		setSkillsData(skillsData.splice(0,1,{ ...skillsData[0], trigger:  window.innerWidth < Number(config.theme.screens.md.replace('px','')) }))
+		setSkillsData(skillsData.map((item,index)=>{
+			return index === 0 ? { ...item, trigger:  window.innerWidth < Number(config.theme.screens.md.replace('px','')) }: item
+		}))
+		if(device.isPC()) return ;
 		observerRef.current = new IntersectionObserver(
 			(entries) => {
-				console.log(entries, '????????')
-				if(entries.length > 1 && entries.every((item=>item.intersectionRatio === 1))) return false;
 				if(!entries[0].isIntersecting) {
 					// console.log('stack remove', entries[0].target)
 					stack.delete((entries[0].target) as HTMLDivElement)

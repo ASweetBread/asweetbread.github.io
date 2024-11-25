@@ -1,9 +1,17 @@
+"use client"
 import Section from '../my-components/section';
 import Progress from '@/components/my-components/progress';
 import { HoverCard, HoverCardFirst, HoverCardSecond, HoverCardThird } from '../my-components/hover-card';
 import { skills } from '@/config/config';
+import { device } from '@/lib/device';
+import { useEffect, useState } from 'react';
 
 const ProjectCard: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ className }) => {
+	const [isH5, setIsH5] = useState(false);
+	useEffect(()=>{
+		setIsH5(device.isH5())
+		console.log(device.isH5())
+	},[])
 	return (
 		<Section id="project" className={`box-border ${className}`}>
 			<div className="w-full md:w-3/5 box-border bg-slate-50 shadow-lg rounded-md relative md:flex md:flex-row">
@@ -19,7 +27,7 @@ const ProjectCard: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ className
 							<h3>业绩</h3>
 							<p>3D版本地区地图，巡航展示动画性能调优，复杂业务表单的展示逻辑，大量数据加载性能优化</p>
 						</HoverCardSecond>
-						<HoverCardThird skills={skills.filter((skill) => skill.project.includes('移动监管'))} />
+						<HoverCardThird className={`${isH5? 'hidden': ''}`} skills={skills.filter((skill) => skill.project.includes('移动监管'))} />
 					</HoverCard>
 				</div>
 				<div className="flex-1 relative py-6">
@@ -34,7 +42,7 @@ const ProjectCard: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ className
 									<h3>业绩</h3>
 									<p>设计和开发整个大屏的渲染逻辑，使用websocket做实时渲染和失败处理，优化代码确保平稳运行。</p>
 								</HoverCardSecond>
-								<HoverCardThird skills={skills.filter((skill) => skill.project.includes('悦质量'))} />
+								<HoverCardThird className={`${isH5? 'hidden': ''}`} skills={skills.filter((skill) => skill.project.includes('悦质量'))} />
 							</HoverCard>
 							{/* 这个地方之后写一个 三维可视化 项目
 							<HoverCard className="mt-5 bg-white">
@@ -68,7 +76,7 @@ const ProjectCard: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ className
 						<h3>业绩</h3>
 						<p>对编辑器进行长期的包括资源加载、DOM操作等性能优化，结构化资源、习题集、代码块等自定义资源开发。</p>
 					</HoverCardSecond>
-					<HoverCardThird skills={skills.filter((skill) => skill.project.includes('数字教材阅读器'))} />
+					<HoverCardThird className={`${isH5? 'hidden': ''}`} skills={skills.filter((skill) => skill.project.includes('数字教材阅读器'))} />
 				</HoverCard>
 				<HoverCard className="mt-4 md:my-auto bg-white">
 					<HoverCardFirst>
@@ -79,7 +87,7 @@ const ProjectCard: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ className
 						<h3>业绩</h3>
 						<p>网页加载速度提高了50%以上，优化了大量数据导致的页面卡顿，对项目的样式重构以设配各种机型。</p>
 					</HoverCardSecond>
-					<HoverCardThird skills={skills.filter((skill) => skill.project.includes('Joy Quality'))} />
+					<HoverCardThird className={`${isH5? 'hidden': ''}`} skills={skills.filter((skill) => skill.project.includes('Joy Quality'))} />
 				</HoverCard>
 			</div>
 		</Section>
