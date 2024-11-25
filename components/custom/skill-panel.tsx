@@ -15,7 +15,7 @@ const SkillPanel: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ className 
 	const [skillsData, setSkillsData] = useState(skills.map((item, index)=>{
 		return {
 			...item,
-			trigger: index===0
+			trigger: false
 		}
 	}));
 
@@ -29,6 +29,11 @@ const SkillPanel: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ className 
 			}))
 		}, 300)
 	}
+	/**
+	 * 防抖函数
+	 * @param fn 延时执行的函数
+	 * @param delay 时间-毫秒
+	 */
 	function delayRun(fn: Function, delay: number) {
 		if(timeout) {
 			clearTimeout(timeout);
@@ -41,8 +46,10 @@ const SkillPanel: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ className 
 	}
 
 	useEffect(() => {
+		setSkillsData(skillsData.splice(0,1,{ ...skillsData[0], trigger:  window.innerWidth < Number(config.theme.screens.md.replace('px','')) }))
 		observerRef.current = new IntersectionObserver(
 			(entries) => {
+				console.log(entries, '????????')
 				if(entries.length > 1 && entries.every((item=>item.intersectionRatio === 1))) return false;
 				if(!entries[0].isIntersecting) {
 					// console.log('stack remove', entries[0].target)

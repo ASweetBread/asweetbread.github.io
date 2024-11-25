@@ -19,12 +19,12 @@ const HoverCardFirst: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ childr
 	return <div className={`p-4 absolute top-0 left-0 right-0 bottom-0 ${className}`}>{children}</div>;
 };
 
-const HoverCardSecond: React.FC<{ DisplayType: 'rotate', trigger: Boolean } & React.HTMLAttributes<HTMLDivElement>> = ({ DisplayType, children, className, trigger=false }) => {
+const HoverCardSecond: React.FC<{ DisplayType: 'rotate', trigger?: Boolean } & React.HTMLAttributes<HTMLDivElement>> = ({ DisplayType, children, className, trigger=false }) => {
 	const hoverTransformClasses = {
 		rotate: 'md:group-hover:opacity-100 md:group-hover:-rotate-0 origin-bottom-right',
 	};
 	const triggerTransformClasses = {
-		rotate: '-rotate-0 opacity-100 origin-bottom-right',
+		rotate: '!-rotate-0 opacity-100 origin-bottom-right',
 	};
 	return (
 		<div

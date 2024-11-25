@@ -1,5 +1,6 @@
 import { CardBody, CardContainer, CardItem } from '@/components/ui/3d-card';
 import { skills } from '@/config/config';
+import { useEffect, useState } from 'react';
 
 export default function MainCard() {
 	const projects = ['Hybrid App', 'Web App', 'Mini Program', 'WebGL', 'WebGIS', 'Chrom Extension'];
@@ -37,19 +38,26 @@ export default function MainCard() {
 
 		return { left: leftPosition, top: topPosition };
 	}
-	const spanelements = skills.map((value, index) => {
-		const { left, top } = getPosition();
-		elementPostions.push({ left, top });
-		return (
-			<span key={index} style={{ top: top + '%', left: left + '%' }} className="inline-block absolute animate-spin-slow-reverse">
-				{value.name}
-			</span>
-		);
-	});
+	const [spanelements, setSpanelements] = useState<React.JSX.Element[]>([])
+	const [animateState, setAnimateState] = useState(false)
+	useEffect(()=>{
+		const elements = skills.map((value, index) => {
+			const { left, top } = getPosition();
+			elementPostions.push({ left, top });
+			const element = (
+				<span key={index} style={{ top: top + '%', left: left + '%' }} className={`inline-block absolute ${animateState? 'animate-spin-slow-reverse': ''}`}>
+					{value.name}
+				</span>
+			);
+			return element
+		});
+		setSpanelements(elements)
+		setAnimateState(true)
+	},[animateState])
 	return (
 		<main className="relative">
 			<div className="absolute w-full h-full md:flex md:justify-center pt-5 hidden">
-				<div className="absolute h-full animate-spin-slow">
+				<div className={`absolute h-full ${animateState ? 'animate-spin-slow' : ''}`}>
 					{spanelements}
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" className="h-full">
 						<circle cx="160" cy="160" r="159" className="stroke-muted-foreground fill-none stroke-2"></circle>

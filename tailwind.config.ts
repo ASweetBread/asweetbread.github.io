@@ -6,6 +6,7 @@ const config = {
 	prefix: '',
 	theme: {
 		screens: {
+			sm: '640px',
 			md: '768px'
 		},
 		container: {
@@ -54,6 +55,10 @@ const config = {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))',
 				},
+				main: {
+					purple: 'var(--main-purple)',
+					blue: 'var(--main-blue)',
+				}
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
