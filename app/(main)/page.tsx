@@ -39,15 +39,30 @@ export default function Home() {
 	},[])
 	
 	return (
-		<>
-			<div className="pb-10 relative z-10" style={isH5?{}:{ perspective: '1000px'}}>
+		<main>
+			<div className="pb-10 relative">
 				<ColorPalette></ColorPalette>
-				<div className='w-screen h-screen bg-transparent'></div>
-				<motion.div ref={otherpannel} className='bg-white relative z-10 shadow-2xl origin-center' style={isH5?{}:{ rotateX: rotateX, transformStyle: 'preserve-3d' }}>
-					<MainCard></MainCard>
-					<SkillPanel className="md:mt-10 mx-0"></SkillPanel>
-					<ProjectCard className="mt-10"></ProjectCard>
+				<motion.div className='w-screen h-screen fixed top-0 z-0 bg-white flex justify-center items-center text-4xl'
+					style={{ scale: scrollScale }}
+				>
+					<div className='px-10 flex flex-col justify-center items-center text-center group'>
+						<h1 className='cursor-default text-6xl mb-6 relative scale-100 group-hover:scale-110 duration-500 transition-transform'>
+							<span className='text-4xl mr-6 text-gray-600'>关于我:</span>
+							<span className='absolute font-bold  text-cyan-600 top-0 left-0 -z-10 group-hover:-translate-y-full opacity-0 group-hover:opacity-100 group-hover:-translate-x-full duration-500 transition-transform'>?</span>
+							王帅
+						</h1>
+						<h1 className='cursor-default bg-gradient-to-b from-gray-600 to-slate-800 bg-clip-text text-transparent leading-normal'>一个前端工程师，创造美观、交互性强且高性能的用户界面，将设计转化为现实</h1>
+					</div>
+					{/* <div className='w-60 h-60 bg-black text-white' style={{ transformStyle: 'preserve-3d', perspective: '200px',transform: `rotateX(40deg)`  }}>测试</div> */}
 				</motion.div>
+				<div className='w-screen h-screen bg-transparent pointer-events-none'></div>
+				<div  style={isH5?{}:{ perspective: '1800px'}}>
+					<motion.div ref={otherpannel} className='bg-white relative z-10 shadow origin-center pt-24' style={isH5?{}:{ rotateX: rotateX, transformStyle: 'preserve-3d' }}>
+						<MainCard></MainCard>
+						<SkillPanel className="md:mt-10 mx-0"></SkillPanel>
+						<ProjectCard className="mt-10"></ProjectCard>
+					</motion.div>
+				</div>
 			</div>
 			<div ref={transformRef} style={{ height: '200vh' }} className='pt-10 z-10 relative'>
 				<div className='sticky top-0 h-screen overflow-hidden'>
@@ -59,15 +74,9 @@ export default function Home() {
 					<div>测试文字</div>
 				</div>
 			</div>
-			<div  className='bg-slate-800 h-screen'></div>
-			<motion.div className='w-screen h-screen fixed top-0 bg-white flex justify-center items-center text-4xl'
-				style={{ scale: scrollScale }}
-			>
-				测试
-				{/* <div className='w-60 h-60 bg-black text-white' style={{ transformStyle: 'preserve-3d', perspective: '200px',transform: `rotateX(40deg)`  }}>测试</div> */}
-			</motion.div>
 			
-		</>
+			
+		</main>
 		
 	);
 }

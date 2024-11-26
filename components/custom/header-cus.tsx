@@ -21,7 +21,7 @@ export default function HeaderCus() {
 			<NavigationMenu className="justify-center text-primary">
 				<NavigationMenuList>
 
-					<NavigationMenuItem>
+					<NavigationMenuItem className='hidden'>
 						<NavigationMenuTrigger className="bg-transparent hover:bg-transparent">
 							<span title="在这里展示自己的练习项目" className="text-lg">
 								Code

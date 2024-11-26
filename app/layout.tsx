@@ -31,6 +31,7 @@ export default function RootLayout({
       >
         <HeaderCus></HeaderCus>
         {children}
+        <footer  className='bg-slate-800 h-screen'></footer>
       </body>
     </html>
   );
